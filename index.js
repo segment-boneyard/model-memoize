@@ -1,6 +1,7 @@
 
 var each = require('each')
-  , type = require('type');
+  , type = require('type')
+  , bind = require('bind');
 
 
 /**
@@ -33,8 +34,8 @@ module.exports = function (models) {
 
 function Memoizer (Model, models) {
   this.Model = Model;
-  this._get = Model.get.bind(Model);
-  Model.get = this.get.bind(this);
+  this._get = bind(Model, Model.get);
+  Model.get = bind(this, this.get);
 
   var cache = this.cache = {};
   if (models) each(models, function (attrs) {
