@@ -1,4 +1,3 @@
-
 # model-memoize
 
   Memoizes the model objects returned from the server to reduce outbound requests and speed up initial page loading.
@@ -7,7 +6,7 @@
 
     $ component install segmentio/model-memoize
 
-## API
+## Examples
 
   Just `use` the plugin:
 
