@@ -11,16 +11,13 @@ var each = require('each')
  */
 
 module.exports = function (models) {
+  // just the plugin
+  if ('function' === type(models)) return new Memoizer(models);
 
   // warming cache with models
-  if ('array' === type(models)) {
-    return function (Model) {
-      new Memoizer(Model, models);
-    };
-  }
-
-  // just the plugin
-  new Memoizer(models);
+  return function (Model) {
+    new Memoizer(Model, models);
+  };
 };
 
 
