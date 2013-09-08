@@ -1,4 +1,3 @@
-
 var each = require('each')
   , type = require('type')
   , bind = require('bind');
@@ -54,7 +53,7 @@ Memoizer.prototype.get = function (id, callback) {
   if (cache[id]) return callback(null, cache[id]);
 
   this._get(id, function (err, model) {
-    if (err) return callback(err);
+    if (err || !model) return callback(err);
     cache[model.primary()] = model;
     callback(null, model);
   });
