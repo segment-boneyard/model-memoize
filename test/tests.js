@@ -18,4 +18,13 @@ describe('model-memoize', function () {
       done();
     });
   });
+
+  it('should memoize new instances', function (done) {
+    var model = new Model({ id: 3, name: 'c' });
+    Model.get(3, function (err, res) {
+      assert(res);
+      assert('c' === res.name());
+      done();
+    });
+  });
 });

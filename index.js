@@ -33,6 +33,10 @@ function Memoizer (Model, models) {
   this._get = bind(Model, Model.get);
   Model.get = bind(this, this.get);
 
+  Model.on('construct', function (model) {
+    cache[model.primary()] = model;
+  });
+
   var cache = this.cache = {};
   if (models) each(models, function (attrs) {
     var model = new Model(attrs);

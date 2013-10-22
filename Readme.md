@@ -11,8 +11,8 @@
   Just `use` the plugin:
 
 ```js
-var memoize = require('model-memoize')
-  , model = require('model');
+var memoize = require('model-memoize');
+var model = require('model');
 
 var Person = model('person')
   .use(memoize)
